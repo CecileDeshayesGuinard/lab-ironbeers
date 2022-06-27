@@ -27,11 +27,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/beers', (req, res) => {
-  res.render('beers', {beers: punkAPI.getBeers()});
+  punkAPI.getBeers()
+  .then(function(data) {
+  res.render('beers', {beers: data});
+  })
 });
 
 app.get('/random-beer', (req, res) => {
-  res.render('random-beer', {myBeer: punkAPI.getRandom()});
+  punkAPI.getRandom()
+  .then(function(data) {
+  res.render('random-beer', {myBeer: data});
+  })
 });
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
