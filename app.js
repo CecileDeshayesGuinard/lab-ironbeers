@@ -15,6 +15,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Register the location for handlebars partials here:
 
+
+hbs.registerPartials(__dirname + '/views/partials'); // mon erreur était de renvoyer vers le fichier allBeers et non vers le dossier patials
+
 punkAPI
   .getBeers()
   .then(beersFromApi => console.log('Beers from the database: ', beersFromApi))
@@ -31,13 +34,16 @@ app.get('/beers', (req, res) => {
   .then(function(data) {
   res.render('beers', {beers: data});
   })
-});
+  .catch(error => {
+    console.log('error')});})
 
 app.get('/random-beer', (req, res) => {
   punkAPI.getRandom()
   .then(function(data) {
   res.render('random-beer', {myBeer: data});
   })
+  .catch(error => {
+    console.log('error')});
 });
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
