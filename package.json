@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/wdpt202204par/lab-ironbeers/issues"
   },
-  "homepage": "https://github.com/wdpt202204par/lab-ironbeers#readme"
+  "homepage": "https://github.com/wdpt202204par/lab-ironbeers#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
 }

@@ -18,10 +18,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 hbs.registerPartials(__dirname + '/views/partials'); // mon erreur était de renvoyer vers le fichier allBeers et non vers le dossier patials
 
-punkAPI
-  .getBeers()
-  .then(beersFromApi => console.log('Beers from the database: ', beersFromApi))
-  .catch(error => console.log(error));
+// punkAPI
+//   .getBeers()
+//   .then(beersFromApi => console.log('Beers from the database: ', beersFromApi))
+//   .catch(error => console.log(error));
 
 // Add the route handlers here:
 
@@ -40,7 +40,8 @@ app.get('/beers', (req, res) => {
 app.get('/random-beer', (req, res) => {
   punkAPI.getRandom()
   .then(function(data) {
-  res.render('random-beer', {myBeer: data});
+    console.log('data=', data);
+  res.render('random-beer', {beer: data[0]});
   })
   .catch(error => {
     console.log('error')});
